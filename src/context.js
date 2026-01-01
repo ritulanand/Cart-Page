@@ -22,6 +22,16 @@ export const AppProvider = ({ children }) => {
     localStorage.setItem('cartState', JSON.stringify(state))
   }, [state.cart])
 
+  useEffect(() => {
+  dispatch({ type: 'LOADING' })
+
+  // simulate API fetch
+  setTimeout(() => {
+    dispatch({ type: 'DISPLAY_ITEMS', payload: cartItems })
+  }, 500)
+}, [])
+
+
   const clearCart = () => {
     dispatch({ type: 'CLEAR_CART' })
   }
